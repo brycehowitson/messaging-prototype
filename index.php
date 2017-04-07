@@ -25,7 +25,7 @@
 
 	</head>
 	<body>
-		<div id="" class="device ios">
+		<div id="" class="device ios white">
 			<div id="screen">
 				HI
 			</div>

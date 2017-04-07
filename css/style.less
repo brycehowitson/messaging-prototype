@@ -94,11 +94,6 @@ select optgroup option {}
 button {}
 
 
-.error {font-style: italic; color: @error-color; font-size: 14px; 
-	span { font-weight: bold; }
-	li { text-align: center; font-size: 12px; padding: 5px; }
-} /* use for validation error messages */
-
 .field-validation-valid {  }
 .field-validation-error {  }
 .input-validation-error {  }
@@ -111,8 +106,8 @@ input:-moz-placeholder { color:#999; font:99% sans-serif; }
 input:required:invalid, input:focus:invalid { -moz-box-shadow: none; /* Removes default delete if using own shadow */ }
 input:required:valid, input:focus:valid { }
 
-input:focus:invalid { border: 1px solid @error-color; color: @error-color; }
-input:required:valid, input:focus:valid { color:green; border: 1px solid green; }
+input:focus:invalid { }
+input:required:valid, input:focus:valid {  }
 
 
 /* html5 layout elements */
@@ -121,27 +116,35 @@ footer {}
 nav {}
 aside {}
 
+.center {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
 .bg { position: absolute; top: 0; left: 0; width:100%; height:100%; overflow: hidden; }
 .bg:before { content:""; position: absolute; top: 0; left: 0; right:0; bottom:0; z-index: 1; background: url('../images/photo-1451186859696-371d9477be93.jpg') no-repeat 0 0; filter: blur(80px); transform: scale(1.2); }
 
 /* =========================================================================================================================
-*	ADD PAGE SPECIFIC OR SPECIALTY STYLES HERE
-*
-*	be specific with these (only use them where needed)
+*	DEVICE LAYOUT. THIS IS COMMON
 *	========================================================================================================================= */
 
-.device { z-index:10; position: relative; margin: 0 auto; 
+.device { z-index:10; position: relative; margin: 0 auto; background-color: transparent; background-position: top left; background-repeat: no-repeat; background-size: contain; 
   #screen { position: absolute; z-index:1; background:lime; overflow-y: auto; overflow-x: hidden; }
 }
 
-.device.ios { width:450px; height:885px; background: transparent url(../images/iphoneShell.png) top left no-repeat; background-size: contain;
-  #screen {top:106px; right:39px; bottom:112px; left:37px; }
-  #statusBar { position: absolute; z-index: 10; top:106px; right:39px; left:37px; height:30px;  }
+.device.ios { width:450px; height:885px;
+  @ios-top: 106px;
+  @ios-right: 39px;
+  @ios-bottom: 112px;
+  @ios-left: 37px;
+  #screen {top:@ios-top; right:@ios-right; bottom:@ios-bottom; left:@ios-left; }
+  #statusBar { position: absolute; z-index: 10; top:@ios-top; right:@ios-right; left:37px; height:30px;  }
   #statusBar.dark { background: rgba(0,0,0,0.2) url(../images/ios-status-bar.png) no-repeat 0 0; background-size: contain; }
   #statusBar.white { background: rgba(0,0,0,0.2) url(../images/ios-status-bar-white.png) no-repeat 0 0; background-size: contain; }
 }
- 
 
+.device.ios.white { background-image: url(../images/iphoneShell.png); }
+ 
+/* =========================================================================================================================
+* STYLES FOR EACH PROTOTYPE USE THE ID ON .device TO SPECIFY
+* ========================================================================================================================= */
 
 
 
@@ -201,19 +204,6 @@ aside {}
 }
 
 
-
-@media print {
-  * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; }
-  a, a:visited { color: #444 !important; text-decoration: underline; }
-  a[href]:after { content: " (" attr(href) ")"; }
-  abbr[title]:after { content: " (" attr(title) ")"; }
-  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }  /* Don't show links for images, or javascript/internal links */
-  pre, blockquote { border: 1px solid #999; page-break-inside: avoid; }
-  thead { display: table-header-group; } /* css-discuss.incutio.com/wiki/Printing_Tables */
-  tr, img { page-break-inside: avoid; }
-  p, h2, h3 { orphans: 3; widows: 3; }
-  h2, h3{ page-break-after: avoid; }
-}  
 
 
 /* =========================================================================================================================
