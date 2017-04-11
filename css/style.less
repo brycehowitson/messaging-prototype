@@ -125,22 +125,30 @@ aside {}
 *	DEVICE LAYOUT. THIS IS COMMON
 *	========================================================================================================================= */
 
-.device { z-index:10; position: relative; margin: 0 auto; background-color: transparent; background-position: top left; background-repeat: no-repeat; background-size: contain; 
-  #screen { position: absolute; z-index:1; background:lime; overflow-y: auto; overflow-x: hidden; }
+.device { z-index:10; position: relative; margin: 2rem auto; background-color: transparent; background-position: top left; background-repeat: no-repeat; background-size: contain; 
+  #screenWrap { position: absolute; overflow: hidden; }
+  #screen { position: relative; z-index:1; overflow-y: auto; overflow-x: hidden; }
+  #statusBar { position: absolute; z-index: 10; top:0; right:0; left:0; }
+  #keyboard { position: absolute; z-index: 10; bottom:0; left:0; right:0; pointer-events: none; transition: all 0.2s ease-out; }
 }
 
-.device.ios { width:450px; height:885px;
-  @ios-top: 106px;
-  @ios-right: 39px;
-  @ios-bottom: 112px;
-  @ios-left: 37px;
-  #screen {top:@ios-top; right:@ios-right; bottom:@ios-bottom; left:@ios-left; }
-  #statusBar { position: absolute; z-index: 10; top:@ios-top; right:@ios-right; left:37px; height:30px;  }
-  #statusBar.dark { background: rgba(0,0,0,0.2) url(../images/ios-status-bar.png) no-repeat 0 0; background-size: contain; }
+.device.ios { width:431px; height:866px; box-shadow: 0 0 30px 0 rgba(0,0,0,0.3); border-radius: 60px;
+  @ios-top: 100px;
+  @ios-right: 28px;
+  @ios-bottom: 100px;
+  @ios-left: 28px;
+  #screenWrap {top:@ios-top; right:@ios-right; bottom:@ios-bottom; left:@ios-left; }
+  #screen { width:100%; height:100%; padding-top:30px; }
+  #statusBar { height:30px; }
+  #statusBar.dark { background: rgba(0,0,0,0.2) url(../images/ios-status-bar.png) no-repeat 0 0; background-size: contain;  }
   #statusBar.white { background: rgba(0,0,0,0.2) url(../images/ios-status-bar-white.png) no-repeat 0 0; background-size: contain; }
+  #keyboard { height:216px; transform: translate(0, 230px);}
+  #keyboard.lower { background: transparent url(../images/ios-lower.png) no-repeat 0 0; background-size: contain; }
+  #keyboard.open { transform: translate(0, 0); pointer-events: auto; }
 }
 
-.device.ios.white { background-image: url(../images/iphoneShell.png); }
+.device.ios.white { background-image: url(../images/iphone-silver.png); }
+.device.ios.black { background-image: url(../images/iphone-black.png); }
  
 /* =========================================================================================================================
 * STYLES FOR EACH PROTOTYPE USE THE ID ON .device TO SPECIFY

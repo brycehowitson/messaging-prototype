@@ -16,20 +16,30 @@
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
 		<link rel="stylesheet" href="css/style.css">
-
-		<!-- Diagnostic CSS enable this if you need help tracking down a problem -->
-		<!-- <link rel="stylesheet" href="css/other/diagnostic.css"> -->
 		
 		<!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
 		<script src="js/libs/modernizr-2.5.3.min.js"></script>
 
 	</head>
 	<body>
+		<!-- ==============================================
+		give each prototype a unique ID here 
+		================================================ -->
 		<div id="" class="device ios white">
-			<div id="screen">
-				HI
+			<div id="screenWrap">
+				<div id="screen">
+					<!-- place prototype content here -->
+
+
+
+
+
+
+					<!-- place prototype content here -->
+				</div>
+				<div id="statusBar" class="white"></div>
+				<div id="keyboard" class="lower"></div>
 			</div>
-			<div id="statusBar" class="white"></div>
 		</div>
 		<div class="bg"></div>
 		
